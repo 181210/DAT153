@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">NameQuiz</string>
+    <string name="loading_splash">Loading...</string>
+    <string name="btn_menu_newgame">New Game</string>
+    <string name="btn_menu_database">Database</string>
+    <string name="name_card">PlaceHolder Name</string>
+    <string name="Headline_Card">The Database</string>
+    <string name="btn_add_card">Add Character</string>
+    <string name="enter_name_hint">Enter the characters name..</string>
+    <string name="btn_img_select">Add an image from gallery</string>
+    <string name="goBackButton">Return</string>
+</resources>
