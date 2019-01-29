@@ -6,12 +6,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.widget.Toast
 import dat153.no.hvl.namequiz.data.PersonListAdapter
 import dat153.no.hvl.namequiz.model.Person
 import dat153.no.hvl.namequiz.ui.CharacterActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.list_row.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     val REQUEST_CODE_PERSON : Int = 1
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        personList = ArrayList<Person>()
+        personList = ArrayList()
         layoutManager = LinearLayoutManager(this)
         adapter = PersonListAdapter(personList!!, this)
 
@@ -71,25 +73,41 @@ class MainActivity : AppCompatActivity() {
         personList!!.add(person5)
 
 
+        /**
+         * Onclick listener to Add Character. Starts activity for result.
+         */
         btn_add_card.setOnClickListener {
             //TODO Open a second activity where you can add a persons name and image
             var intent = Intent(this, CharacterActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_GAME)
-
-
         }
 
         adapter!!.notifyDataSetChanged()
 
+        /*
+        Sends an intent to GameActivity class. Adds person object to intent
+         */
         btn_newgame_main.setOnClickListener {
-            //TODO Open game activity
+
+            Log.d("Btn_newgame", "Inside the new game button action")
 
             var intent = Intent(this, GameActivity::class.java)
-            startActivityForResult(intent, REQUEST_CODE_PERSON)
+
+            var number = randomNumber()
+
+            intent.putExtra("name", personList!![number].name)
+            intent.putExtra("img", personList!![number].img)
+
+            println("The name inside btn: " + personList!![number].name)
+            println("The img inside btn: " + personList!![number].img)
+            startActivity(intent)
         }
 
     }
 
+    /**
+     * Activity method for receiving response from Add Character
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_PERSON) {
@@ -101,5 +119,10 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, person.name, Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    fun randomNumber() : Int{
+        var random = Random()
+        return random.nextInt(personList!!.size)
     }
 }

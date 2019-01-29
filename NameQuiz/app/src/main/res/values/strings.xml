@@ -10,5 +10,5 @@
     <string name="btn_img_select">Add an image from gallery</string>
     <string name="goBackButton">Return</string>
     <string name="txt_descr_game">Choose Wisely</string>
-    <string name="btn_game_return">Exit Game</string>
+    <string name="btn_game_return">Enter</string>
 </resources>

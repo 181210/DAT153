@@ -11,7 +11,7 @@
     <ImageView
             android:layout_width="350dp"
             android:layout_height="350dp" app:srcCompat="@drawable/ic_image_black_24dp"
-            android:id="@+id/imageView2"
+            android:id="@+id/img_game"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" android:layout_marginBottom="216dp"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView2" android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/img_game" android:textAlignment="center"
             android:textStyle="bold" android:textSize="24sp" android:textColor="@color/cardview_light_background"
             app:layout_constraintVertical_bias="1.0"/>
     <CheckBox
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             tools:layout_editor_absoluteX="30dp" android:id="@+id/box_alt1" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/img_game" android:textSize="18sp"
             android:fontFamily="monospace"/>
     <CheckBox
             android:text="CheckBox"
@@ -65,10 +65,9 @@
             android:text="@string/btn_game_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_game_return" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/txt_game_score" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.923"
-            app:layout_constraintVertical_bias="0.575"/>
+            android:id="@+id/btn_game_enter"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.925"/>
 </android.support.constraint.ConstraintLayout>
