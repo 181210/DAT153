@@ -4,6 +4,6 @@ import android.media.Image
 
 class Person{
     var name: String? = null
-    var img: Image? = null
+    var img: Int? = null
 }
 

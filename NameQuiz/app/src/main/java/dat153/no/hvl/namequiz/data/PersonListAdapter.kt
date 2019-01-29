@@ -41,7 +41,7 @@ class PersonListAdapter(private val list: ArrayList<Person>,
             img.setImageResource(person.img!!)
 
             itemView.setOnClickListener {
-                Toast.makeText(context,"Name: $name", Toast.LENGTH_LONG ).show()
+                Toast.makeText(context,"Name: ${name.text}", Toast.LENGTH_LONG ).show()
             }
         }
 
