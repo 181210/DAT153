@@ -25,7 +25,7 @@ class CharacterActivity : AppCompatActivity() {
             var returnInt = this.intent
 
            returnInt.putExtra("name", enter_name.text)
-           returnInt.putExtra("img", img)
+           //returnInt.putExtra("img", img)
            setResult(Activity.RESULT_OK, returnInt)
             finish()
         }
@@ -61,7 +61,7 @@ class CharacterActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
             img_add_char.setImageURI(data?.data)
-            img = data?.data.toString().toInt()
+            //img = data!!.data.toString().toInt()
 
         }
     }

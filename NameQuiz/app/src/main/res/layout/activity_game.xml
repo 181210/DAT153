@@ -14,7 +14,7 @@
             android:id="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginBottom="324dp"
+            android:layout_marginStart="8dp" android:layout_marginBottom="216dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.488"
     />
     <TextView
@@ -24,15 +24,16 @@
             android:id="@+id/txt_descr_game" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintBottom_toTopOf="@+id/imageView2" android:textAlignment="center"
-            android:textStyle="bold" android:textSize="24sp" android:textColor="@color/cardview_light_background"/>
+            android:textStyle="bold" android:textSize="24sp" android:textColor="@color/cardview_light_background"
+            app:layout_constraintVertical_bias="1.0"/>
     <CheckBox
             android:text="CheckBox"
             android:background="@android:color/darker_gray"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="30dp" android:id="@+id/checkBox" android:layout_marginTop="16dp"
+            android:layout_height="30dp"
+            tools:layout_editor_absoluteX="30dp" android:id="@+id/box_alt1" android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" android:textSize="18sp"
             android:fontFamily="monospace"/>
     <CheckBox
@@ -40,26 +41,26 @@
             android:background="@android:color/darker_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="30dp" android:id="@+id/checkBox2" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox" android:textSize="18sp" android:fontFamily="monospace"/>
+            tools:layout_editor_absoluteX="30dp" android:id="@+id/box_alt2" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/box_alt1" android:textSize="18sp" android:fontFamily="monospace"/>
     <CheckBox
             android:text="CheckBox"
             android:background="@android:color/darker_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="30dp" android:id="@+id/checkBox3" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox2" android:textSize="18sp"
+            tools:layout_editor_absoluteX="30dp" android:id="@+id/box_alt3" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/box_alt2" android:textSize="18sp"
             android:fontFamily="monospace"/>
     <TextView
             android:layout_height="wrap_content"
             android:id="@+id/txt_game_score" android:fontFamily="monospace"
             android:textSize="18sp" android:textColor="@color/cardview_light_background"
             android:layout_width="match_parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox3" android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/box_alt3" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintVertical_bias="0.314"/>
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.145"/>
     <Button
             android:text="@string/btn_game_return"
             android:layout_width="wrap_content"

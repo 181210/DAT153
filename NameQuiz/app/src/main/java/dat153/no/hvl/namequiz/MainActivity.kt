@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.Toast
 import dat153.no.hvl.namequiz.data.PersonListAdapter
 import dat153.no.hvl.namequiz.model.Person
 import dat153.no.hvl.namequiz.ui.CharacterActivity
@@ -95,8 +96,9 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 var person = Person()
                 person.name = data!!.extras.get("name").toString()
-                person.img = data!!.extras.get("img").toString().toInt()
-                personList?.add(person)
+                //person.img = data!!.extras.get("img").toString().toInt()
+                //personList?.add(person)
+                Toast.makeText(this, person.name, Toast.LENGTH_LONG).show()
             }
         }
     }
