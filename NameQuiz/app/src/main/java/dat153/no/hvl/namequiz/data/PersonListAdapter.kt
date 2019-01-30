@@ -13,6 +13,7 @@ import dat153.no.hvl.namequiz.R
 
 class PersonListAdapter(private val list: ArrayList<Person>,
                         private val context: Context) : RecyclerView.Adapter<PersonListAdapter.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): PersonListAdapter.ViewHolder {
         /*
         Creates and returns a compiled view from XML file "list_row.xml"

@@ -34,20 +34,9 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
 
-        //TODO Create a default hardcoded list with Person Objects -> Drawable + String
-
-        // Load in data
-//        for (i in 0..9){
-//            val person = Person()
-//            person.name = "Test" + i
-//
-//
-//            personList!!.add(person)
-//        }
-
         //Load in data
         /**
-         * Adding some default data :|
+         * Adding some default data
          */
 
         var person1 = Person()
@@ -65,12 +54,24 @@ class MainActivity : AppCompatActivity() {
         var person5 = Person()
         person5.img = R.drawable.img5
         person5.name = "Darth Vader"
+        var person6 = Person()
+        person6.img = R.drawable.img6
+        person6.name = "Anakin Skywalker"
+        var person7 = Person()
+        person7.img = R.drawable.img7
+        person7.name = "Rey"
+        var person8 = Person()
+        person8.img = R.drawable.img8
+        person8.name = "Death Star"
 
         personList!!.add(person1)
         personList!!.add(person2)
         personList!!.add(person3)
         personList!!.add(person4)
         personList!!.add(person5)
+        personList!!.add(person6)
+        personList!!.add(person7)
+        personList!!.add(person8)
 
 
         /**
@@ -82,10 +83,15 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_CODE_GAME)
         }
 
+        /*
+        Updates the personlist. Notifies that changes were made.
+         */
         adapter!!.notifyDataSetChanged()
 
         /*
-        Sends an intent to GameActivity class. Adds person object to intent
+        Sends an intent to GameActivity class.
+        Adds an image and 3 names for the game where 2 are not the
+        correct name for the image.
          */
         btn_newgame_main.setOnClickListener {
 
@@ -94,10 +100,25 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, GameActivity::class.java)
 
             var number = randomNumber()
-
+            //Picks a random character from the personlist array
             intent.putExtra("name", personList!![number].name)
             intent.putExtra("img", personList!![number].img)
 
+            //Picks an unused name from the personlist array
+            var number2 = randomNumber()
+            while(number2 == number) {
+                number2 = randomNumber()
+            }
+            intent.putExtra("fake1", personList!![number2].name)
+
+            //Picks an unused name from the personlist array
+            var number3 = randomNumber()
+            while (number3 == number2 || number3 == number){
+                number3 = randomNumber()
+            }
+            intent.putExtra("fake2", personList!![number3].name)
+
+            // LOG-ENTRIES
             println("The name inside btn: " + personList!![number].name)
             println("The img inside btn: " + personList!![number].img)
             startActivity(intent)

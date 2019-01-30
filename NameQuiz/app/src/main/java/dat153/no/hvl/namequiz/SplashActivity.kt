@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-            Toast.makeText(this, "Redirecting", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Redirecting to menu", Toast.LENGTH_SHORT).show()
             finish()
         }, 5000)
     }
