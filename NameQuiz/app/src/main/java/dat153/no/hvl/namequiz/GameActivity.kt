@@ -2,6 +2,7 @@ package dat153.no.hvl.namequiz
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -21,7 +22,6 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     var fake2: String = ""
     var img: Int = 0
 
-
     override fun onClick(v: View?) {
         v as CheckBox
         var isChecked: Boolean = v.isChecked
@@ -40,7 +40,6 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             R.id.box_alt3 -> { if(isChecked) {
                 box_alt1.isChecked = false
                 box_alt2.isChecked = false
-
             }
             }
         }
@@ -72,17 +71,14 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             names!!.add(fake1)
             names!!.add(fake2)
 
-            val times: Int = 3
-            var counter: Int = 0
-
             box_alt1.text = names!![randomNumber()]
             box_alt2.text = names!![randomNumber()]
+            box_alt3.text = names!![randomNumber()]
 
             while (box_alt1.text == box_alt2.text){
                 box_alt2.text = names!![randomNumber()]
             }
-            //box_alt2.text = fake1
-            box_alt3.text = names!![randomNumber()]
+
             while (box_alt3.text == box_alt2.text || box_alt3.text == box_alt1.text){
                 box_alt3.text = names!![randomNumber()]
             }
@@ -98,8 +94,25 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
 
 
         btn_game_enter.setOnClickListener{
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+
+            if(box_alt1.isChecked && box_alt1.text == name){
+                box_alt1.setBackgroundColor(Color.GREEN)
+            } else if (box_alt1.isChecked && box_alt1.text != name) {
+                box_alt1.setBackgroundColor(Color.RED)
+            }
+            
+            if(box_alt2.isChecked && box_alt2.text == name){
+                box_alt2.setBackgroundColor(Color.GREEN)
+            } else if (box_alt2.isChecked && box_alt2.text != name) {
+                box_alt2.setBackgroundColor(Color.RED)
+            }
+
+            if(box_alt3.isChecked && box_alt3.text == name){
+                box_alt3.setBackgroundColor(Color.GREEN)
+            } else if (box_alt3.isChecked && box_alt3.text != name){
+                box_alt3.setBackgroundColor(Color.RED)
+            }
+
         }
 
     }
