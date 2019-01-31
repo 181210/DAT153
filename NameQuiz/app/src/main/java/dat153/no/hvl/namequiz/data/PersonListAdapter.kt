@@ -1,12 +1,14 @@
 package dat153.no.hvl.namequiz.data
 
 import android.content.Context
+import android.net.Uri
 import dat153.no.hvl.namequiz.model.Person
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import dat153.no.hvl.namequiz.R
@@ -38,12 +40,15 @@ class PersonListAdapter(private val list: ArrayList<Person>,
             var name: TextView = itemView.findViewById(R.id.name_card) as TextView
             var img: ImageView = itemView.findViewById(R.id.img_card) as ImageView
 
+
             name.text = person.name
             img.setImageResource(person.img!!)
 
             itemView.setOnClickListener {
                 Toast.makeText(context,"Name: ${name.text}", Toast.LENGTH_LONG ).show()
             }
+
+
         }
 
     }

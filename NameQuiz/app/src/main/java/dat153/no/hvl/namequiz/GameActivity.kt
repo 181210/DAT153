@@ -1,5 +1,6 @@
 package dat153.no.hvl.namequiz
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -21,6 +22,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
     var fake1: String = ""
     var fake2: String = ""
     var img: Int = 0
+    var isCorrect: Boolean = false
 
     override fun onClick(v: View?) {
         v as CheckBox
@@ -66,6 +68,8 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
             Log.d("The name game activity", "$name")
             Log.d("The img game act: ", img.toString())
 
+
+
             //Randomize which checkbox that has the correct answer
             names!!.add(name)
             names!!.add(fake1)
@@ -94,25 +98,38 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
 
 
         btn_game_enter.setOnClickListener{
+            var returnInt = this.intent
 
             if(box_alt1.isChecked && box_alt1.text == name){
                 box_alt1.setBackgroundColor(Color.GREEN)
+                txt_descr_game.text = "The force is strong!"
+                isCorrect = true
             } else if (box_alt1.isChecked && box_alt1.text != name) {
                 box_alt1.setBackgroundColor(Color.RED)
+                txt_descr_game.text = "The force is weak.."
             }
-            
+
             if(box_alt2.isChecked && box_alt2.text == name){
                 box_alt2.setBackgroundColor(Color.GREEN)
+                txt_descr_game.text = "The force is strong!"
+                isCorrect = true
             } else if (box_alt2.isChecked && box_alt2.text != name) {
                 box_alt2.setBackgroundColor(Color.RED)
+                txt_descr_game.text = "The force is weak.."
             }
 
             if(box_alt3.isChecked && box_alt3.text == name){
                 box_alt3.setBackgroundColor(Color.GREEN)
+                txt_descr_game.text = "The force is strong!"
+                isCorrect = true
             } else if (box_alt3.isChecked && box_alt3.text != name){
                 box_alt3.setBackgroundColor(Color.RED)
+                txt_descr_game.text = "The force is weak.."
             }
 
+            returnInt.putExtra("correct", isCorrect)
+            setResult(Activity.RESULT_OK, returnInt)
+            finish()
         }
 
     }

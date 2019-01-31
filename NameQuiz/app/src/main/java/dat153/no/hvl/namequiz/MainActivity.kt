@@ -2,6 +2,8 @@ package dat153.no.hvl.namequiz
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuffColorFilter
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     private var adapter : PersonListAdapter? = null
     private var personList: ArrayList<Person>? = null
     private var layoutManager: RecyclerView.LayoutManager? = null
+    var score : Int = 0
+    var correct: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +77,8 @@ class MainActivity : AppCompatActivity() {
         personList!!.add(person7)
         personList!!.add(person8)
 
+        println("Image path from R: ${person1.img}" )
+
 
         /**
          * Onclick listener to Add Character. Starts activity for result.
@@ -80,13 +86,17 @@ class MainActivity : AppCompatActivity() {
         btn_add_card.setOnClickListener {
             //TODO Open a second activity where you can add a persons name and image
             var intent = Intent(this, CharacterActivity::class.java)
-            startActivityForResult(intent, REQUEST_CODE_GAME)
+            startActivityForResult(intent, REQUEST_CODE_PERSON)
         }
 
-        /*
-        Updates the personlist. Notifies that changes were made.
-         */
-        adapter!!.notifyDataSetChanged()
+        btn_del_char.setOnClickListener {
+            if(txt_del != null){
+                var n: String = txt_del.text.toString()
+                deleteChar(n)
+            }
+        }
+
+
 
         /*
         Sends an intent to GameActivity class.
@@ -103,6 +113,7 @@ class MainActivity : AppCompatActivity() {
             //Picks a random character from the personlist array
             intent.putExtra("name", personList!![number].name)
             intent.putExtra("img", personList!![number].img)
+
 
             //Picks an unused name from the personlist array
             var number2 = randomNumber()
@@ -121,13 +132,15 @@ class MainActivity : AppCompatActivity() {
             // LOG-ENTRIES
             println("The name inside btn: " + personList!![number].name)
             println("The img inside btn: " + personList!![number].img)
-            startActivity(intent)
+
+            //Send intent to GameActivity
+            startActivityForResult(intent,REQUEST_CODE_GAME)
         }
 
     }
 
     /**
-     * Activity method for receiving response from Add Character
+     * Activity method for receiving response from Add Character and Game
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -135,15 +148,67 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 var person = Person()
                 person.name = data!!.extras.get("name").toString()
-                //person.img = data!!.extras.get("img").toString().toInt()
-                //personList?.add(person)
-                Toast.makeText(this, person.name, Toast.LENGTH_LONG).show()
+                person.img = data!!.extras.getInt("img")
+
+//                person.img = data!!.extras.get("img").toString().toInt()
+                personList!!.add(person)
+                Toast.makeText(this, person.name + " " + person.img, Toast.LENGTH_LONG).show()
+
+
+                /**
+                 * Notifies changes, updates the view
+                 */
+                adapter!!.notifyDataSetChanged()
+            }
+        }
+
+
+        //adapter!!.notifyDataSetChanged()
+
+        if (requestCode == REQUEST_CODE_GAME) {
+            if (resultCode == Activity.RESULT_OK) {
+                correct = data!!.extras.getBoolean("correct")
+                txt_score.text = "Your score: " + score(correct)
+                if(score < 3){
+                    txt_score_comment.text = "The force is weak with this player.."
+                } else if (score < 5 && score >= 3) {
+                    txt_score_comment.text = "The force is getting stronger"
+                } else {
+                    txt_score_comment.text = "The force is strong with this player!"
+                }
             }
         }
     }
 
+
+
     fun randomNumber() : Int{
         var random = Random()
         return random.nextInt(personList!!.size)
+    }
+
+    fun score(correct : Boolean) :Int {
+        if (correct) {
+            score++
+        }
+         else if (!correct && (score > 0)) {
+            score--
+        }
+        return score
+    }
+
+    fun deleteChar(name: String){
+        var i : Int = 0
+        var person : Person
+        while (personList!!.isNotEmpty()){
+            if (name != personList!![i].name){
+                i++
+            } else {
+                person = personList!![i]
+                personList!!.drop(i)
+                Toast.makeText(this,"Character ${person.name} is deleted", Toast.LENGTH_LONG).show()
+            }
+        }
+
     }
 }
