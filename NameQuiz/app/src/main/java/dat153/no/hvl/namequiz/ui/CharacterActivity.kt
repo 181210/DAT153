@@ -105,7 +105,7 @@ class CharacterActivity : AppCompatActivity() {
                     selectImageGallery()
                 } else {
                     //Permission denied
-                    Toast.makeText(this, "Permission Denied. The Force is weak.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "No image added; Permission denied", Toast.LENGTH_LONG).show()
                 }
             }
         }

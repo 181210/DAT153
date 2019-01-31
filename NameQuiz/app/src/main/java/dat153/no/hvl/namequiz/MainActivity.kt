@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     val REQUEST_CODE_PERSON : Int = 1
     val REQUEST_CODE_GAME : Int = 2
     private var adapter : PersonListAdapter? = null
-    private var personList: ArrayList<Person>? = null
+    private var personList: MutableList<Person>? = null
     private var layoutManager: RecyclerView.LayoutManager? = null
     var score : Int = 0
     var correct: Boolean = false
@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         personList = ArrayList()
-        layoutManager = LinearLayoutManager(this)
-        adapter = PersonListAdapter(personList!!, this)
+        layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
+        adapter = PersonListAdapter((personList as ArrayList<Person>), this)
 
         // Setup recyclerview
         recyclerView.layoutManager = layoutManager
@@ -94,6 +94,7 @@ class MainActivity : AppCompatActivity() {
                 var n: String = txt_del.text.toString()
                 deleteChar(n)
             }
+
         }
 
 
@@ -200,15 +201,20 @@ class MainActivity : AppCompatActivity() {
     fun deleteChar(name: String){
         var i : Int = 0
         var person : Person
-        while (personList!!.isNotEmpty()){
-            if (name != personList!![i].name){
-                i++
-            } else {
-                person = personList!![i]
-                personList!!.drop(i)
-                Toast.makeText(this,"Character ${person.name} is deleted", Toast.LENGTH_LONG).show()
+
+        for (p in personList!!.iterator()){
+            if (p.name != name){
+                i ++
+            } else if (p.name == name){
+                personList!!.removeAt(i)
+
+                Toast.makeText(this, "Character $name is deleted", Toast.LENGTH_SHORT).show()
+
+                /**
+                 * Notifies changes, updates the view
+                 */
+                adapter!!.notifyDataSetChanged()
             }
         }
-
     }
 }
