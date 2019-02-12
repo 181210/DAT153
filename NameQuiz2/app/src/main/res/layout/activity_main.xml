@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/txt_name_main"
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp"
@@ -29,13 +29,13 @@
             android:layout_marginStart="8dp"
             app:layout_constraintHorizontal_bias="1.0" android:fontFamily="monospace" android:textStyle="bold"
             android:textSize="18sp" android:layout_marginBottom="64dp"
-            app:layout_constraintBottom_toTopOf="@+id/editText"/>
+            app:layout_constraintBottom_toTopOf="@+id/txt_name_main"/>
     <ImageView
             android:layout_width="248dp"
             android:layout_height="248dp"
             android:contentDescription="Image of character"
             app:srcCompat="@mipmap/ic_launcher"
-            android:id="@+id/imageView2"
+            android:id="@+id/img_person"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

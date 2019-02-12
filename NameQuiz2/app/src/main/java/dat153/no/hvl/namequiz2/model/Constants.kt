@@ -4,7 +4,7 @@ import android.net.Uri
 
 //Database setup
 val DATABASE_VERSION: Int = 1
-val DATABASE_NAME: String = "persons.db"
+val DATABASE_NAME: String = "person.db"
 val TABLE_NAME: String = "person"
 
 //Table names

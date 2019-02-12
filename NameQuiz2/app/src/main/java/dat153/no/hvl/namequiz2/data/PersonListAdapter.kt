@@ -22,14 +22,14 @@ class PersonListAdapter(private val list: ArrayList<Person>?,
 //TODO
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-
-
+    holder.bindViews(list!![position])
     }
 //TODO
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
 
-
-
+    val view = LayoutInflater.from(context)
+        .inflate(R.layout.activity_list_row, parent, false)
+    return ViewHolder(view, context, list)
     }
 
     override fun getItemCount(): Int {
@@ -39,11 +39,11 @@ class PersonListAdapter(private val list: ArrayList<Person>?,
 
 
 
-    inner class ViewHolder(itemView: View, context: Context, list: ArrayList<Person>): RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder(itemView: View, context: Context, list: ArrayList<Person>?): RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         //local instances of parent parameters
         var mContext: Context = context
-        var mList: ArrayList<Person> = list
+        var mList: ArrayList<Person> = list!!
 
         var personName = itemView.findViewById(R.id.txt_name_card) as TextView
         var personImg: ImageView = itemView.findViewById(R.id.img_card) as ImageView
