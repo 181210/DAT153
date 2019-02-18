@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NameQuiz</string>
+    <string name="txt_welcome_userPref">Welcome new player!</string>
+    <string name="hint_username_sharedPref">Enter your username</string>
+    <string name="btn_enter_sharedPref">Save</string>
+    <string name="btn_add_db_menu">Add Character</string>
+    <string name="btn_show_db_menu">View entries</string>
+    <string name="btn_play_menu">Play</string>
+    <string name="btn_db_menu">Archive</string>
+</resources>

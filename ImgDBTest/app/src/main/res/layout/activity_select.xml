@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        tools:context=".Activities.SelectActivity">
+
+    <ImageView android:layout_width="match_parent"
+               android:id="@+id/img_select"
+               android:layout_above="@id/layout_button"
+               android:layout_height="match_parent"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:id="@+id/layout_button"
+                  android:weightSum="2"
+                  android:layout_alignParentBottom="true"
+
+                  android:layout_height="wrap_content">
+
+        <Button
+                android:text="Add Character"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_add_char_dbMenu"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" tools:layout_editor_absoluteY="378dp"/>
+        <Button
+                android:text="Save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:id="@+id/btn_save" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                android:layout_marginBottom="60dp" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Return"
+                android:id="@+id/btn_return_add_char"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
