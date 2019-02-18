@@ -55,6 +55,8 @@ class DBHelper (context: Context) : SQLiteAssetHelper(context, DB_NAME, null, DB
                 result = c.getBlob(c.getColumnIndex(COL_DATA))
             } while (c.moveToNext())
         }
+
+        c.close()
         return result
     }
 
@@ -75,6 +77,8 @@ class DBHelper (context: Context) : SQLiteAssetHelper(context, DB_NAME, null, DB
                 list.add(char)
             } while (cursor.moveToNext())
         }
+
+        cursor.close()
         return list
     }
 
@@ -93,6 +97,10 @@ class DBHelper (context: Context) : SQLiteAssetHelper(context, DB_NAME, null, DB
     fun deleteChar(character: Character){
         var db = writableDatabase
         db.delete(TBL_NAME, COL_NAME + "=?", arrayOf(character.name))
+    }
+
+    fun clearDB(){
+        writableDatabase.execSQL("DROP TABLE IF EXISTS $TBL_NAME")
     }
 
     fun getDBItemCount() : Int{

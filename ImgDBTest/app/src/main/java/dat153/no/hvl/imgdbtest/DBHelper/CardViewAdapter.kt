@@ -60,7 +60,6 @@ class CardViewAdapter (private val list: ArrayList<Character>, private val conte
                 charImg.setImageBitmap(bitmap)
 
             } else {
-                Toast.makeText(mContext, "Cannot find image", Toast.LENGTH_LONG).show()
             }
 
             deleteBtn.setOnClickListener(this)
@@ -127,6 +126,7 @@ class CardViewAdapter (private val list: ArrayList<Character>, private val conte
                     notifyItemChanged(adapterPosition, character)
 
                     dialog!!.dismiss()
+
                 } else {
                     //Nothing
                 }
