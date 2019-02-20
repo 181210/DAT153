@@ -2,6 +2,7 @@ package dat153.no.hvl.imgdbtest.Activities
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.BitmapFactory
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -10,7 +11,9 @@ import android.view.WindowManager
 import android.widget.Toast
 import dat153.no.hvl.imgdbtest.Activities.UserPrefActivity.MyShareVar.PREFS_NAME
 import dat153.no.hvl.imgdbtest.DBHelper.DBHelper
+import dat153.no.hvl.imgdbtest.Model.Character
 import dat153.no.hvl.imgdbtest.R
+import dat153.no.hvl.imgdbtest.Utils.Utils
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
@@ -26,6 +29,19 @@ class SplashActivity : AppCompatActivity() {
         dbHelper = DBHelper(this)
 
         var dataBack : SharedPreferences = getSharedPreferences(PREFS_NAME, 0)
+
+        var char = Character()
+
+        var name = "Default character"
+        char.name = name
+
+        val icon = BitmapFactory.decodeResource(
+            this.getResources(),
+            android.R.drawable.ic_menu_compass
+        )
+
+        var byteArray = Utils.getBytes(icon)
+        dbHelper!!.addBitmap(name, byteArray )
 
         if(dataBack.contains("message")){
             var userName = dataBack.getString("message", "")

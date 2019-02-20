@@ -7,4 +7,7 @@
     <string name="btn_show_db_menu">View entries</string>
     <string name="btn_play_menu">Play</string>
     <string name="btn_db_menu">Archive</string>
+    <string name="btn_enter_game">Enter</string>
+    <string name="btn_quit_game">Finish</string>
+    <string name="tct_hint_game">Guess the name</string>
 </resources>

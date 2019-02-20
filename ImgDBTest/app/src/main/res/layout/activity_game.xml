@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:textColor="@android:color/white"
-            android:hint="Guess the name"
+            android:hint="@string/tct_hint_game"
             android:textColorHint="@android:color/white"
             android:ems="10"
             android:id="@+id/txt_guess_game" android:layout_marginTop="44dp"
@@ -30,7 +30,7 @@
             app:layout_constraintHorizontal_bias="0.0"
     />
     <Button
-            android:text="Enter"
+            android:text="@string/btn_enter_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_enter_game"
@@ -40,15 +40,15 @@
             android:layout_marginTop="44dp" app:layout_constraintTop_toBottomOf="@+id/txt_guess_game"
     />
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="170dp"
+            android:layout_height="44dp"
             android:id="@+id/txt_score" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@+id/img_game" android:textColor="@color/cardview_light_background"
             android:textSize="18sp" android:textStyle="bold"/>
     <Button
-            android:text="Quit the game"
+            android:text="@string/btn_quit_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_return_game"
@@ -58,4 +58,15 @@
             android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.0" android:textStyle="bold"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.38"/>
+    <TextView
+            android:layout_width="170dp"
+            android:layout_height="44dp"
+            android:id="@+id/txt_int_score"
+            android:textColor="@color/cardview_light_background" android:textStyle="bold"
+            app:layout_constraintRight_toRightOf="@id/txt_score"
+            app:layout_constraintStart_toEndOf="@+id/txt_score" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_game" app:layout_constraintHorizontal_bias="0.829"
+            app:layout_constraintVertical_bias="0.0"/>
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package dat153.no.hvl.imgdbtest
 
+
 import org.junit.Assert
 import org.junit.Test
 
@@ -9,7 +10,6 @@ import org.junit.Test
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-
 
 class ExampleUnitTest {
 

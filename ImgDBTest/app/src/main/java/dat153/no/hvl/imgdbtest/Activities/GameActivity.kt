@@ -2,6 +2,7 @@ package dat153.no.hvl.imgdbtest.Activities
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import dat153.no.hvl.imgdbtest.Model.Character
 import dat153.no.hvl.imgdbtest.R
 import dat153.no.hvl.imgdbtest.Utils.Utils
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.activity_game.view.*
 import java.util.*
 
 class GameActivity : AppCompatActivity() {
@@ -46,17 +48,15 @@ class GameActivity : AppCompatActivity() {
             var answer = txt_guess_game.text.toString()
             counter += 1
             if (answer.toLowerCase() == char.name!!.toLowerCase()) {
-//                btn_enter_game.setBackgroundColor(Color.GREEN)
                 score += 1
             }
-//            } else {
-//                btn_enter_game.setBackgroundColor(Color.RED)
-//            }
 
             Log.d("Score", "$score")
 
-
             txt_score.text = "Score: $score correct of $counter tries!"
+            txt_int_score.text = score.toString()
+
+            txt_int_score.setTextColor(Color.BLACK)
 
             txt_guess_game.text.clear()
 
